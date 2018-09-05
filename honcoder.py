@@ -32,7 +32,7 @@ def is_HONcode_certified(url):
 
 # define search term and number of sites
 search_term = 'lung cancer'
-n_urls = 100
+n_urls = 20
 
 # compare Greek and English
 # see https://developers.google.com/custom-search/docs/ref_languages for list of languages available
