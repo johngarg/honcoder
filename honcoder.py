@@ -9,7 +9,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--search', default=None, help='Search term')
 parser.add_argument('--n', default=None, help='Number of urls to pull from search')
 parser.add_argument('--lang', default='en', help='Language for search')
-parser.add_argument('--engine', default='google', choices=['google', 'duckduckgo'])
+parser.add_argument('--engine', default='google', choices=['google'],
+                    help='Search engine to use (only google currently supported)')
+parser.add_argument('--perpage', default=10, help='Number of results per page')
 args = parser.parse_args()
 
 def process_url(url):
@@ -73,7 +75,7 @@ if __name__ == '__main__':
         n_urls = int(args.n)
 
     gs = GoogleSearch(search_term, lang=args.lang)
-    gs.results_per_page = 10
+    gs.results_per_page = int(args.perpage)
     counter = 0
     while counter < int(args.n):
         results = gs.get_results()
