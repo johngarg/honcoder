@@ -77,6 +77,8 @@ if __name__ == '__main__':
     counter = 0
     while counter < int(args.n):
         results = gs.get_results()
+        if not results:
+            raise ValueError('Empty results!')
         for result in results:
             url = result.url
             results_to_csv(args, url, counter)
