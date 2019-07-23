@@ -1,3 +1,6 @@
 *.txt
 *.org
+.DS_Store
 data/
+csv/
+__pycache__/
