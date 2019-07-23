@@ -1,5 +1,4 @@
 *.txt
-*.org
 .DS_Store
 data/
 csv/

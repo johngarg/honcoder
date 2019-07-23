@@ -1,0 +1,60 @@
+#+TITLE: Honcoder: a Python3 interface to the HONcode website certification database
+#+OPTIONS: whn:nil num:nil toc:nil H:nil
+
+The package ~honcoder~ is a small collection of Python functions and scripts for
+analysing the HONcode medical website certification database.
+
+* Setting up the environment
+
+To use ~honcoder~ you need a working Python3 installation. For both Mac and
+Windows, the easiest way to do this is with a package manager.
+
+** Mac
+First install X-code and the Mac OSX developer tools. You can download this
+through the regular Mac App Store. Then you'll need the package manager
+~homebrew~. Follow [[https://docs.python-guide.org/starting/install3/osx/][these instructions]] to install ~homebrew~ and ~python3~, then
+run the following command in the terminal somewhere where you would like to save the xgoogle program:
+#+BEGIN_SRC bash
+git clone https://github.com/mycognitive/xgoogle.git
+cd xgoogle
+pip3 install -r requirements.txt .
+#+END_SRC
+to install the dependencies needed for the code.
+
+** Windows
+Using a shell like [[https://docs.microsoft.com/en-us/powershell/scripting/getting-started/getting-started-with-windows-powershell?view=powershell-6][Powershell,]] you need to install the package manager
+~Chocolatey~ from [[https://chocolatey.org/][here.]] Then install ~python3~ with [[https://gist.github.com/lopezjurip/2a188c90284bf239197b][these instructions]].
+
+* Using the code
+If it's not there already, you'll need to download the data. Place the
+~honcoder~ directory somewhere on your machine. Within the directory, run the
+~pickler.py~ file with
+#+BEGIN_SRC bash
+python3 pickler.py
+#+END_SRC
+This will download the HONcode data (as a ~.txt~ file with a French name) and
+convert it to a python-friendly format for quick lookup. This data file is saved
+as ~honcode.dat~ in the ~data~ directory. Run the search with
+#+BEGIN_SRC bash
+python3 honcoder.py --search 'lung cancer' --n 50 --lang 'en' > output.csv
+#+END_SRC
+where the string of characters in quotes following ~--search~ is the search
+term, ~--n~ is the number of google results you would like to query and ~--lang~
+is the language of the Google search. ~output.csv~ is the name of the output
+file (spreadsheet). You should be able to double click on this file to open it
+in Pages on a Mac. You can import csv files into Excel as well. You can find
+information about the languages available [[https://developers.google.com/custom-search/docs/ref_languages][here]].
+
+* Notes
+The google search works by pages so sometimes you'll get a few more URLs than
+you asked for. Also, sometimes you'll get an ~HTTP Error 503: Service
+Unavailable~ error. This comes from Google and is meant to prevent you spamming
+them with the constant queries. Most of the time this isn't an issue; if you get
+the error, wait a few minutes and run the code again. It's possible another
+interface to google would do better than this.
+
+The HONcode database keeps only the base URLs. For example,
+~https://gov.wales/topics/health/nhswales/plans/heart_plan/?lang=en~ would be in
+the list as just ~gov.wales/~. Check some of the processed URLs against the
+whole thing to see that the code is processing them correctly. Also, be sure to
+check some of them with the browser to see if they are working.
