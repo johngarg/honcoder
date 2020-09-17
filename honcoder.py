@@ -1,6 +1,7 @@
 import argparse
 import hashlib
 import pickle
+import os
 
 from xgoogle.search import GoogleSearch
 
@@ -30,7 +31,7 @@ def process_url(url):
     return base_url
 
 
-def is_HONcode_certified(url, path="data/"):
+def is_HONcode_certified(url, path="data"):
     """Function returns Boolean value representing certification status of url.
     The url does not already need to be processed.
     """
@@ -40,7 +41,7 @@ def is_HONcode_certified(url, path="data/"):
     h = m.hexdigest()
 
     # load pickled data
-    with open(f"{path}honcode.dat", "rb") as dat_file:
+    with open(os.path.join(os.getcwd(), path, "honcode.dat"), "rb") as dat_file:
         data = pickle.load(dat_file)
     if h in data.keys():
         return True
