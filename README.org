@@ -15,9 +15,11 @@ through the regular Mac App Store. Then you'll need the package manager
 ~homebrew~. Follow [[https://docs.python-guide.org/starting/install3/osx/][these instructions]] to install ~homebrew~ and ~python3~, then
 run the following command in the terminal somewhere where you would like to save the xgoogle program:
 #+BEGIN_SRC bash
-git clone https://github.com/mycognitive/xgoogle.git
+git clone https://github.com/johngarg/xgoogle.git
 cd xgoogle
-pip3 install -r requirements.txt .
+pip3 install -r requirements.txt
+python3 setup.py build
+python3 setup.py install
 #+END_SRC
 to install the dependencies needed for the code.
 
