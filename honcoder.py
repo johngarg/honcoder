@@ -98,11 +98,16 @@ if __name__ == "__main__":
     GS = GoogleSearch(SEARCH_TERM, lang=ARGS.lang)
     GS.results_per_page = int(ARGS.perpage)
     COUNTER = 0
+    SEEN = set()
     while COUNTER < int(ARGS.n):
         RESULTS = GS.get_results()
         if not RESULTS:
             raise ValueError("Empty results!")
         for result in RESULTS:
             URL = result.url
+            PROC = process_url(URL)
+            if PROC == "/" or URL in SEEN or "google" in PROC:
+                continue
             results_to_csv(ARGS, URL, COUNTER)
+            SEEN.add(URL)
             COUNTER += 1
