@@ -27,9 +27,10 @@ Using a shell like [[https://docs.microsoft.com/en-us/powershell/scripting/getti
 
 * Using the code
 If it's not there already, you'll need to download the data. Place the
-~honcoder~ directory somewhere on your machine. Within the directory, run the
-~pickler.py~ file with
+~honcoder~ directory somewhere on your machine. Within the directory, create the
+data directory and run the ~pickler.py~ file with
 #+BEGIN_SRC bash
+mkdir data
 python3 pickler.py
 #+END_SRC
 This will download the HONcode data (as a ~.txt~ file with a French name) and
