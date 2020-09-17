@@ -27,7 +27,7 @@ Using a shell like [[https://docs.microsoft.com/en-us/powershell/scripting/getti
 
 * Using the code
 If it's not there already, you'll need to download the data. Place the
-~honcoder~ directory somewhere on your machine. Within the directory, create the
+~honcoder~ directory somewhere on your machine. Within the folder, create the
 data directory and run the ~pickler.py~ file with
 #+BEGIN_SRC bash
 mkdir data
